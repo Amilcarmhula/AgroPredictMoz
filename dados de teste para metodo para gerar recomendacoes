@@ -1,0 +1,21 @@
+# Testes para validar todas as condições
+print("Teste 1: Clima seco e quente com muito sol")
+print(recomGenerator(33, 31, 8, 7))  # Esperado para clima quente, seco e com sol intenso
+
+print("\nTeste 2: Clima úmido e chuvoso com baixa luminosidade")
+print(recomGenerator(25, 81, 55, 2))  # Clima úmido, chuvoso e com pouca luz solar
+
+print("\nTeste 3: Condições ideais para crescimento")
+print(recomGenerator(26, 60, 30, 5))  # Condições ideais para muitas plantas (temperatura e umidade moderadas)
+
+print("\nTeste 4: Clima frio e úmido com muita chuva")
+print(recomGenerator(18, 85, 70, 2))  # Frio, úmido e muita chuva
+
+print("\nTeste 5: Clima quente e seco com baixa luminosidade")
+print(recomGenerator(35, 30, 5, 2))  # Quente e seco, com pouca luz solar
+
+print("\nTeste 6: Clima muito quente e muito úmido")
+print(recomGenerator(33, 92, 15, 5))  # Muito quente e muito úmido
+
+print("\nTeste 7: Clima ameno com boa luminosidade")
+print(recomGenerator(22, 50, 15, 7))  # Clima ameno, umidade moderada e boa quantidade de luz solar
