@@ -9,6 +9,7 @@ class Previsao(BaseModel):
     umidade:float
     precipitacao:float
     luz_solar:int
+    chuva:float
     recomendacoes:List[str]
     data_registo:datetime
 
