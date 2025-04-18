@@ -1,6 +1,8 @@
 import requests
 import os
 from dotenv import load_dotenv
+from datetime import datetime, timedelta, timezone
+
 
 load_dotenv()
 api_key = os.getenv('API_KEY')
@@ -14,23 +16,39 @@ def getDadosClima(cidade:str):
         return result.json()
     return None
 
-def recomGenerator(temp: float, umidade: float, precipt: float, sun_li: int):
-    recomendacoes = []
+def calculateSunDuration(cidade):
+    dados = getDadosClima(cidade)
+
+    nascer_utc = datetime.fromtimestamp(dados['sys']['sunrise'], timezone.utc)
+    por_utc = datetime.fromtimestamp(dados['sys']['sunset'], timezone.utc)
+
+    sunrise_local = nascer_utc + timedelta(hours=2)
+    sunset_local = por_utc + timedelta(hours=2)
+
+    duracao = (sunset_local - sunrise_local).total_seconds()/36000
+    return round(duracao)
+
+def recomGenerator(temp: float, umidade: float, precipt: float, cidade):
+    sun_li = calculateSunDuration(cidade)
+
+    temp -= 273
+    precipt *=100
+    recomendacoes = ['Sem recomendacoes']
 
     # Condicoes para clima seco e quente com muito sol
-    if temp > 32 and umidade < 40 and precipt < 10 and sun_li > 6:
+    if temp > 32 and umidade < 40 and 0 <= precipt < 10 and sun_li > 6:
         recomendacoes.append('Aumentar a frequencia de rega em curtos intervalos')
         recomendacoes.append('Usar cobertura morta para reduzir evaporacao')
         recomendacoes.append('Aplicar fertilizantes liquidos foliares no inicio da manha')
 
     # Condicoes para clima umido e chuvoso com baixa luminosidade
-    if 20 < temp < 26 and umidade > 80 and precipt > 50 and sun_li < 3:
+    if 20 < temp < 26 and umidade > 80 and precipt > 50 and 0 < sun_li < 3:
         recomendacoes.append('Suspender a rega ou reduzir a rega ao minimo necessario')
         recomendacoes.append('Evitar fertilizantes nitrogenados')
         recomendacoes.append('Preferir adubos ricos em potassio e calcio para fortalecer as plantas')
 
     # Condicoes ideais para crescimento
-    if 24 < temp < 28 and 55 < umidade < 70 and 20 < precipt < 40 and 4 < sun_li < 6:
+    if 24 < temp < 28 and 55 < umidade < 84 and 20 < precipt < 40 and 0 < sun_li < 6:
         recomendacoes.append('Manter a rega regular (1 vez ao dia ou conforme o tipo de solo)')
         recomendacoes.append('Fazer adubacao equilibrada')
 
@@ -41,7 +59,7 @@ def recomGenerator(temp: float, umidade: float, precipt: float, sun_li: int):
         recomendacoes.append('Monitorar o drenagem do solo para evitar alagamentos')
 
     # Condicoes para clima quente e seco com baixa luminosidade
-    if temp > 32 and umidade < 40 and precipt < 20 and sun_li < 3:
+    if temp > 32 and umidade < 40 and 0 <= precipt < 20 and sun_li < 3:
         recomendacoes.append('Aumentar a frequência de rega, mas em menor intensidade')
         recomendacoes.append('Usar cobertura de solo para reter umidade')
         recomendacoes.append('Aplicar fertilizantes líquidos de liberação lenta')
