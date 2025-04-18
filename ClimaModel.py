@@ -11,10 +11,9 @@ class Previsao(BaseModel):
     id:int
     localizacao:str
     temperatura:float
-    umidade:float
+    humidade:float
     precipitacao:float
     luz_solar:int
-    chuva:float
     recomendacao:List[Recomendacao] = []
     data_registo:datetime
 
