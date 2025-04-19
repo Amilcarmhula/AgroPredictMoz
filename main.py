@@ -18,6 +18,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# GET de dados climaticos para serem mostrados para o usuario
+@app.get('/condicoesClimaticas/{local}', response_model=Previsao)
+def getLastClima(local:str):
+    clima = ClimaDao()
+    return clima.getClima(local)
+
 @app.get("/previsoes", response_model=List[Previsao])
 def listar_previsoes():
     dao = ClimaDao()

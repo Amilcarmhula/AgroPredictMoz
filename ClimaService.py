@@ -32,7 +32,6 @@ def geraRecomendacao(temp: float, humidade: float, precipt: float, cidade):
     sun_li = calculateSunDuration(cidade)
 
     temp -= 273
-    precipt *=100
     recomendacoes = []
 
     # Condicoes para clima seco e quente com muito sol

@@ -33,7 +33,7 @@ class Previsao(BaseModel):
 
         temperatura = dadosCLimaticos['main']['temp'] - 273
         humidade = dadosCLimaticos['main']['humidity']
-        precipitacao = dadosCLimaticos.get('rain', {}).get('1h', 0) * 100
+        precipitacao = dadosCLimaticos.get('rain', {}).get('1h', 0)
         luz_solar = calculateSunDuration(cidade)
 
         lista_rec_str = geraRecomendacao(temperatura, humidade, precipitacao, cidade)

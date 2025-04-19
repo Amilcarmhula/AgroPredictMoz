@@ -1,0 +1,107 @@
+[33mcommit 655487dd47397ed519bca7ca2f37a6e83b6b2342[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Sat Apr 19 22:31:21 2025 +0200
+
+    Adicao de middleware para tratamento de cors
+
+[33mcommit 45855fa96dccd75e1a90fc753da8b3503613f505[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Sat Apr 19 20:08:00 2025 +0200
+
+    criacao de metodo de consulta por localizacao na classe ClimaDao e adicao da rota para mesma consulta
+
+[33mcommit a685b4d0ce69d8efeaea1a29fc4915af6329a2f7[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Sat Apr 19 19:08:24 2025 +0200
+
+    README update
+
+[33mcommit d734acaae6ab536e34e642465bb3e629801267c1[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Sat Apr 19 19:01:53 2025 +0200
+
+    Actualizacao do README e do ficheiro de pacotes(requirenebts.txt) necessario para poder rodar a API
+
+[33mcommit f9b201194242643bf7390bdc89917649d87ec9d1[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Sat Apr 19 17:49:40 2025 +0200
+
+    Adicao de roteamento para carragamento de dados no banco do dado e persistencia de novos dados pela API
+
+[33mcommit a33e643f9c2e442a0505ccbd8ca1734500e9972b[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Fri Apr 18 10:14:19 2025 +0200
+
+    Limpeza da classe ConnectionClass e alteracao do nome da ServiceClima para ClimaService
+
+[33mcommit a0ebc5a102016ebedddb062d6180a059b7fbf2d7[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Fri Apr 18 10:09:03 2025 +0200
+
+    Conclusao dos metodos de consulta de previsoes e recomendacoes, juntamente com ajuste do metodo de recomendacoes para caso o clima nas consida com nenhuma das condicoes previamentes estabelecidas no sistema, gere uma informacao padrao
+
+[33mcommit 364e01444f4fbce4a379cc7c759c9bfc56ec22b2[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Fri Apr 18 09:02:05 2025 +0200
+
+    conclusao dos metodos de insercao dos dados climaticos nas tabelas previsao e recomendacoes pro previsao
+
+[33mcommit e00a5a47e0492093be36b6c32df8c16362c490ac[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 20:45:35 2025 +0200
+
+    update do ficheiro PrevisaoModel para que as classes Previsao e Recomendacao reflitam a estrutura do banco de dados
+
+[33mcommit 329a4f0b557219e3bdd4d355d6f91b907a072dea[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 20:32:55 2025 +0200
+
+    Ajuste da classh Previsao e do esquema de banco de dados
+
+[33mcommit 086e84b4a9fafad420dcf5893f5da3d6b682ee29[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 20:32:25 2025 +0200
+
+    Ajuste da classh Previsao e do esquema de banco de dados
+
+[33mcommit fd6c3ff5b9fa920d9248bf91ff3eef7cff73b5d4[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 17:13:59 2025 +0200
+
+    Adição de classe de conexão com banco de dados usando pydantic; adição de classe Previsao também usando pydantic no ficheiro PrevisaoModel; adição de services que ira interagir com a API da OpenWeatherMap para coleta de dados climáticos de uma dada região a partir dos quais ira gerar as recomendações que serão persistidas no banco de dados MYSQL
+
+[33mcommit 48e48f30c10f0740bb26df119bd00d948ec8f9f9[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 17:10:24 2025 +0200
+
+    Adição de classe de conexão com banco de dados usando pydantic; adição de classe Previsao também usando pydantic no ficheiro PrevisaoModel; adição de services que ira interagir com a API da OpenWeatherMap para coleta de dados climáticos de uma dada região a partir dos quais ira gerar as recomendações que serão persistidas no banco de dados MYSQL
+
+[33mcommit 37ee5202a193e4cbe57972390aa8a60f5fb0e119[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 17:07:08 2025 +0200
+
+    Adição de classe de conexão com banco de dados usando pydantic; adição de classe Previsao também usando pydantic no ficheiro PrevisaoModel; adição de services que ira interagir com a API da OpenWeatherMap para coleta de dados climáticos de uma dada região a partir dos quais ira gerar as recomendações que serão persistidas no banco de dados MYSQL
+
+[33mcommit 8fd2e180ec4745b400b094c6cd184bfab6951c3c[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 11:25:23 2025 +0200
+
+    Remover .env do controle de versão
+
+[33mcommit 392f9097373ac64fa12e58d2f6f09cabb0cd0816[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 11:22:19 2025 +0200
+
+    Actualizacao sobre o controle de acesso a chaves de APIs pelo .env
+
+[33mcommit 070e364d367c4025b5a5683e178eb60a1ad71bac[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 11:20:38 2025 +0200
+
+    Actualizacao sobre o controle de acesso a chaves de APIs pelo .env
+
+[33mcommit a94c64e94386b7ec69d6c2fe897b2e1d71422c4c[m
+Author: Amilcar Mula <amilcarmhula.am@gmail.com>
+Date:   Thu Apr 17 11:10:50 2025 +0200
+
+    first commit

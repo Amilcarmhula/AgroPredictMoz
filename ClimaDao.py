@@ -83,6 +83,29 @@ class ClimaDao:
         self.conexao.close()
         return previsoes
 
+    # Consulta dados para rota GET/condicoesClimaticas/{cidade}
+    #Sao os dados que exebidos para p usuario, alem do historico
+    def getClima(self, local:str):
+        sql = "SELECT * FROM previsao WHERE localizacao = %s ORDER BY data_registo DESC LIMIT 1;"
+
+        self.cursor.execute(sql, (local,))
+        p = self.cursor.fetchall()
+
+        linha = p[0]  # Pegamos a primeira (e única) linha
+        previsao = Previsao(
+            id=linha[0],
+            localizacao=linha[1],
+            temperatura=linha[2],
+            humidade=linha[3],
+            precipitacao=linha[4],
+            luz_solar=linha[5],
+            recomendacao=self.getRecomendacoes(linha[0]),  # Aqui usamos a temperatura por exemplo
+            data_registo=linha[6]
+        )
+
+        self.conexao.close()
+        return previsao
+
     def getRecomendacoes(self,id_previsao:int) ->list[Recomendacao]:
         sql = "SELECT * FROM recomendacao where fk_id_previsao = %s"
         self.cursor.execute(sql, (id_previsao,))
