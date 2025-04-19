@@ -18,24 +18,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# GET de dados climaticos para serem mostrados para o usuario
-@app.get('/condicoesClimaticas/{local}', response_model=Previsao)
+# GET de dados climaticos de uma regiao para serem mostrados para o usuario
+@app.get('/clima/regiao/{local}', response_model=Previsao)
 def getLastClima(local:str):
     clima = ClimaDao()
     return clima.getClima(local)
 
-@app.get("/previsoes", response_model=List[Previsao])
+# Lista todas previsoes
+@app.get("/previsao/all", response_model=List[Previsao])
 def listar_previsoes():
     dao = ClimaDao()
     return dao.consultaPrevisa()
 
-@app.get("/previsoes/{local}", response_model=List[Previsao])
+# Lista todas previsoes segundo a regiao. Ideal para historico
+@app.get("/previsao/all/{local}", response_model=List[Previsao])
 def getPrevisoes(local:str):
     dao = ClimaDao()
     return dao.consultaPrevisaPorRegiao(local)
 
-
-@app.post("/previsao/{cidade}")
+# Salva previsao da regiao no banco de dados
+@app.post("/add/previsao/{cidade}")
 def criar_previsao(cidade:str):
     previsao = Previsao.saveModelPrevisao(cidade)
     dao = ClimaDao()
