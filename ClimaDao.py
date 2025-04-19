@@ -28,7 +28,7 @@ class ClimaDao:
 
         self.conexao.commit()
         self.cursor.close()
-        self.conexao.close()
+        return self.conexao.close()
 
     def saveRecomendacao(self,texto:str, id_previsao:int, cursor):
         sql = """
@@ -38,22 +38,8 @@ class ClimaDao:
         valores = (id_previsao, texto)
         cursor.execute(sql, valores)
 
-
-    # Metodo obsoleto
-    # def consultaPrevisa(self):
-    #     sql = """
-    #     SELECT * FROM previsao
-    #     """
-    #     self.cursor.execute(sql)
-    #     result = self.cursor.fetchall()
-    #     # print(result)
-    #     self.conexao.close()
-    #     return result
-
     def consultaPrevisa(self) ->list[Previsao]:
-        sql = """
-        SELECT * FROM previsao
-        """
+        sql = "SELECT * FROM previsao"
         self.cursor.execute(sql)
         result = self.cursor.fetchall()
 
