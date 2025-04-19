@@ -1,11 +1,22 @@
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 
 from ClimaDao import ClimaDao
 from ClimaModel import Previsao
 
 app = FastAPI()
+
+# Configuração CORS
+app.add_middleware(
+    CORSMiddleware,
+    # allow_origins=["http://localhost:5173"],  # ou use ["*"] durante o desenvolvimento
+    allow_origins=["*"],  # ou use ["*"] durante o desenvolvimento
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/previsoes", response_model=List[Previsao])
 def listar_previsoes():
