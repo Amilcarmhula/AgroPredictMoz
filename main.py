@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 
@@ -38,7 +38,7 @@ def getPrevisoes(local:str):
 
 # Salva previsao da regiao no banco de dados
 @app.post("/add/previsao/{cidade}")
-def criar_previsao(cidade:str):
+async def addPrevisao(cidade: str):
     previsao = Previsao.saveModelPrevisao(cidade)
     dao = ClimaDao()
     dao.savePrevisao(previsao)
