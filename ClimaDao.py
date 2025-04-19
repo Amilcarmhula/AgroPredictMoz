@@ -60,6 +60,29 @@ class ClimaDao:
         self.conexao.close()
         return previsoes
 
+    def consultaPrevisaPorRegiao(self, local:str) ->list[Previsao]:
+        sql = "SELECT * FROM previsao where localizacao = %s"
+
+        self.cursor.execute(sql, (local,))
+        result = self.cursor.fetchall()
+
+        previsoes = []
+        for p in result:
+            previsao = Previsao(
+                id=p[0],
+                localizacao=p[1],
+                temperatura=p[2],
+                humidade=p[3],
+                precipitacao=p[4],
+                luz_solar=p[5],
+                recomendacao=self.getRecomendacoes(p[0]),
+                data_registo=p[6]
+            )
+            previsoes.append(previsao)
+
+        self.conexao.close()
+        return previsoes
+
     def getRecomendacoes(self,id_previsao:int) ->list[Recomendacao]:
         sql = "SELECT * FROM recomendacao where fk_id_previsao = %s"
         self.cursor.execute(sql, (id_previsao,))
